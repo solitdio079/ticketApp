@@ -130,80 +130,9 @@ if (!isset($_SESSION["user"])) {
     </div>
     <main class="page-wrapper">
         <!-- Navbar with user account dropdown -->
-        <header class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-            <div class="container">
-                <a href="#" class="navbar-brand flex-shrink-0 me-2 me-xl-4">
-                    <img class="d-block" src="assets/img/logo/logo-light.svg" width="116" alt="Finder">
-                </a>
-                <button type="button" class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarUserNav" aria-controls="navbarUserNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="dropdown order-lg-3">
-                    <a href="#" class="d-inline-block py-1" data-bs-toggle="dropdown">
-                        <img class="rounded-circle" src="assets/img/avatars/02.jpg" width="40" alt="User">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <div class="d-flex align-items-start border-bottom px-3 py-1 mb-2" style="width: 16rem;">
-                            <img class="rounded-circle" src="  assets/img/avatars/02.jpg" width="48" alt="User">
-                            <div class="ps-2">
-                                <h6 class="fs-base mb-0">Robert Fox</h6>
-                                <div class="star-rating star-rating-sm">
-                                    <i class="star-rating-icon fi-star-filled active"></i>
-                                    <i class="star-rating-icon fi-star-filled active"></i>
-                                    <i class="star-rating-icon fi-star-filled active"></i>
-                                    <i class="star-rating-icon fi-star-filled active"></i>
-                                    <i class="star-rating-icon fi-star-filled active"></i>
-                                </div>
-                                <div class="fs-xs py-2">(302) 555-0107<br>robert_fox@gmail.com</div>
-                            </div>
-                        </div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fi-user opacity-60 me-2"></i>
-                            Personal Info
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="fi-lock opacity-60 me-2"></i>
-                            Password & Security
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="fi-list opacity-60 me-2"></i>
-                            My Listings
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="fi-heart opacity-60 me-2"></i>
-                            Wishlist
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="fi-star opacity-60 me-2"></i>
-                            Reviews
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="fi-bell opacity-60 me-2"></i>
-                            Notifications
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Help</a>
-                        <a href="#" class="dropdown-item">Sign Out</a>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse order-lg-2" id="navbarUserNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a href="#" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">About</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
+        <?php
+        require_once "php/header.inc.php";
+        ?>
 
         <div class="container pt-5 pb-lg-4 mt-1 mb-sm-2">
             <!-- Breadcrumb-->
@@ -250,16 +179,11 @@ if (!isset($_SESSION["user"])) {
                                         Utilisateurs
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="card-nav-link" href="#profile1" data-bs-toggle="tab" role="tab">
-                                        <i class="fi-ticket me-2"></i>
-                                        Tous vos Tickets
-                                    </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a class="card-nav-link" href="#messages1" data-bs-toggle="tab" role="tab">
-                                        <i class="fi-chat-left me-2"></i>
-                                        Messages
+                                        <i class="fi-entertainment me-2"></i>
+                                        Tous les Tickets
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -268,13 +192,6 @@ if (!isset($_SESSION["user"])) {
                                         Parametres
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="card-nav-link" href="php/users/logout.inc.php">
-                                        <i class="fi-logout me-2"></i>
-                                        Se Deconnectez
-                                    </a>
-                                </li>
-
                             </ul>
                         </div>
                     </div>
@@ -313,153 +230,7 @@ if (!isset($_SESSION["user"])) {
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="profile1" role="tabpanel">
-                        <button class="btn btn-success" id="eventFormToggle">Ajouter un Ticket</button>
-                        <!-- Light card on dark background: Horizontal -->
 
-                        <form class="p-5" id="addEventForm" style="display:none;" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col-sm-12 my-3 col-md-6">
-                                    <input class="form-control form-control-light" id="name" name="name" type="text" placeholder="Nom de l'evenement" required>
-
-                                </div>
-                                <div class="col-sm-12 my-3 col-md-6">
-                                    <input class="form-control form-control-light" id="place" name="place" type="text" placeholder="Lieu de l'evenement" required>
-                                </div>
-                                <div class="col-sm-12 my-3 col-md-6">
-                                    <input class="form-control form-control-light" id="images" name="images[]" multiple type="file" required>
-                                </div>
-                                <div class="col-sm-12 my-3 col-md-6">
-                                    <select class="form-select form-select-light" id="organizers" name="organizers" required>
-                                        <option value="0">Choisir un organisateur</option>
-
-                                    </select>
-
-                                </div>
-                                <div class="col-sm-12  my-3 col-md-6">
-                                    <!-- Min date + default date - Today -->
-
-                                    <div class="input-group">
-                                        <input class="form-control form-control-light date-picker rounded pe-5" type="text" name="date" placeholder="Choisissez la date de l'evenement" data-datepicker-options='{"altInput": true, "altFormat": "F j, Y", "dateFormat": "Y-m-d", "defaultDate": "today", "minDate": "today"}' required>
-                                        <i class="fi-calendar position-absolute top-50 end-0 translate-middle-y me-3"></i>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 my-3 col-md-6">
-                                    <input class="form-control form-control-light" type="text" id="hour" name="hour" data-format="time" placeholder="hh:mm:ss" required>
-
-                                </div>
-                                <div class="col-sm-12 my-3 col-md-6">
-                                    <input class="form-control form-control-light" type="number" id="total" name="total" placeholder="Nombre de tickets" required>
-
-                                </div>
-                                <div class="col-sm-12 my-3 col-md-6">
-                                    <input class="form-control form-control-light" step="0.01" type="number" id="price" name="price" placeholder="le price d'un ticket" required>
-
-                                </div>
-                                <div class="col-12 my-3">
-                                    <button type="submit" id="addEventBtn" class="btn btn-primary">Ajouter</button>
-                                </div>
-                            </div>
-
-
-
-                        </form>
-
-
-                        <div class="container p-5">
-                            <div class="row">
-
-                            </div>
-                            <div class="row" id="eventRow">
-                                <div class="col-sm-12 col-md-6">
-                                    <!-- Static content overlay -->
-                                    <div class="card bg-size-cover bg-position-center border-0 overflow-hidden" style="background-image: url(assets/img/city-guide/home/upcoming-3.jpg);">
-                                        <span class="img-gradient-overlay"></span>
-                                        <div class="card-body content-overlay pb-0">
-                                            <span class="badge bg-info fs-sm">New</span>
-                                        </div>
-                                        <div class="card-footer content-overlay border-0 pt-0 pb-4">
-                                            <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
-                                                <a href="#" class="text-decoration-none text-light pe-2">
-                                                    <div class="fs-sm text-uppercase pt-2 mb-1">For sale</div>
-                                                    <h3 class="h5 text-light mb-1">Duplex with Garage</h3>
-                                                    <div class="fs-sm opacity-70">
-                                                        <i class="fi-map-pin me-1"></i>
-                                                        21 Pulaski Road Kings Park, NY 11754
-                                                    </div>
-                                                </a>
-                                                <div class="btn-group ms-n2 ms-sm-0 mt-3">
-                                                    <a href="#" class="btn btn-primary px-3">$200,410</a>
-                                                    <button type="button" class="btn btn-primary btn-icon border-end-0 border-top-0 border-bottom-0 border-light fs-sm">
-                                                        <i class="fi-heart"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12 col-md-6">
-                                    <!-- Static content overlay -->
-                                    <div class="card bg-size-cover bg-position-center border-0 overflow-hidden" style="background-image: url(assets/img/city-guide/home/upcoming-2.jpg);">
-                                        <span class="img-gradient-overlay"></span>
-                                        <div class="card-body content-overlay pb-0">
-                                            <span class="badge bg-info fs-sm">New</span>
-                                        </div>
-                                        <div class="card-footer content-overlay border-0 pt-0 pb-4">
-                                            <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
-                                                <a href="#" class="text-decoration-none text-light pe-2">
-                                                    <div class="fs-sm text-uppercase pt-2 mb-1">For sale</div>
-                                                    <h3 class="h5 text-light mb-1">Duplex with Garage</h3>
-                                                    <div class="fs-sm opacity-70">
-                                                        <i class="fi-map-pin me-1"></i>
-                                                        21 Pulaski Road Kings Park, NY 11754
-                                                    </div>
-                                                </a>
-                                                <div class="btn-group ms-n2 ms-sm-0 mt-3">
-                                                    <a href="#" class="btn btn-primary px-3">$200,410</a>
-                                                    <button type="button" class="btn btn-primary btn-icon border-end-0 border-top-0 border-bottom-0 border-light fs-sm">
-                                                        <i class="fi-heart"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12 col-md-6">
-                                    <!-- Static content overlay -->
-                                    <div class="card bg-size-cover bg-position-center border-0 overflow-hidden" style="background-image: url(assets/img/city-guide/home/upcoming-1.jpg);">
-                                        <span class="img-gradient-overlay"></span>
-                                        <div class="card-body content-overlay pb-0">
-                                            <span class="badge bg-info fs-sm">New</span>
-                                        </div>
-                                        <div class="card-footer content-overlay border-0 pt-0 pb-4">
-                                            <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
-                                                <a href="#" class="text-decoration-none text-light pe-2">
-                                                    <div class="fs-sm text-uppercase pt-2 mb-1">For sale</div>
-                                                    <h3 class="h5 text-light mb-1">Duplex with Garage</h3>
-                                                    <div class="fs-sm opacity-70">
-                                                        <i class="fi-map-pin me-1"></i>
-                                                        21 Pulaski Road Kings Park, NY 11754
-                                                    </div>
-                                                </a>
-                                                <div class="btn-group ms-n2 ms-sm-0 mt-3">
-                                                    <a href="#" class="btn btn-primary px-3">$200,410</a>
-                                                    <button type="button" class="btn btn-primary btn-icon border-end-0 border-top-0 border-bottom-0 border-light fs-sm">
-                                                        <i class="fi-heart"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
                     <div class="tab-pane fade" id="messages1" role="tabpanel">
 
 
@@ -579,7 +350,8 @@ if (!isset($_SESSION["user"])) {
 
                                 </div>
                                 <div class="col-12 my-3">
-                                    <button type="submit" id="editTicketBtn" class="btn btn-primary">Ajouter</button>
+                                    <button type="submit" id="editTicketBtn" class="btn btn-primary">Modifier</button>
+                                    <button type="button" id="hideEditForm" class="btn btn-danger">Cacher</button>
                                 </div>
                             </div>
                         </form>
@@ -761,37 +533,20 @@ if (!isset($_SESSION["user"])) {
 
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="settings1" role="tabpanel">
-                            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan.</p>
-                        </div>
 
 
 
                     </div>
+                    <div class="tab-pane fade" id="settings1" role="tabpanel">
+                        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan.</p>
+                    </div>
+
                 </div>
     </main>
     <!-- Footer-->
-    <footer class="footer bg-faded-light">
-        <div class="border-bottom border-light py-4">
-            <div class="container d-sm-flex align-items-center justify-content-between"><a class="d-inline-block" href="real-estate-home-v1.html"><img src="assets/img/logo/logo-light.svg" width="116" alt="logo"></a>
-                <div class="d-flex pt-3 pt-sm-0">
-                    <div class="dropdown ms-n3">
-                        <button class="btn btn-light btn-link btn-sm dropdown-toggle fw-normal py-2" type="button" data-bs-toggle="dropdown"><i class="fi-globe me-2"></i>Eng</button>
-                        <div class="dropdown-menu dropdown-menu-dark w-100"><a class="dropdown-item" href="#">Deutsch</a><a class="dropdown-item" href="#">Français</a><a class="dropdown-item" href="#">Español</a></div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-light btn-link btn-sm dropdown-toggle fw-normal py-2 pe-0" type="button" data-bs-toggle="dropdown"><i class="fi-map-pin me-2"></i>New York</button>
-                        <div class="dropdown-menu dropdown-menu-dark dropdown-menu-sm-end" style="min-width: 7.5rem;"><a class="dropdown-item" href="#">Chicago</a><a class="dropdown-item" href="#">Dallas</a><a class="dropdown-item" href="#">Los Angeles</a><a class="dropdown-item" href="#">San Diego</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container d-lg-flex align-items-center justify-content-between fs-sm pb-3">
-            <div class="d-flex flex-wrap justify-content-center order-lg-2 mb-3"><a class="nav-link nav-link-light fw-normal" href="#">Terms of use</a><a class="nav-link nav-link-light fw-normal" href="#">Privacy policy</a><a class="nav-link nav-link-light fw-normal" href="#">Accessibility statement</a><a class="nav-link nav-link-light fw-normal pe-0" href="#">Interest based ads</a></div>
-            <p class="text-center text-lg-start order-lg-1 mb-lg-0"><span class="text-light opacity-50">&copy; All rights reserved. Made by </span><a class="nav-link-light fw-bold" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
-        </div>
-    </footer>
+    <?php
+    require_once "php/footer.inc.php";
+    ?>
     <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
@@ -839,6 +594,7 @@ if (!isset($_SESSION["user"])) {
             const editId = document.querySelector("#edit_id")
             const editPrevImages = document.querySelector("#edit_images")
             const editOrganiser = document.querySelector("#editOrganizer")
+            const hideEditForm = document.querySelector("#hideEditForm")
 
 
 
@@ -902,6 +658,20 @@ if (!isset($_SESSION["user"])) {
                             default:
                                 break;
                         }
+                    }
+                })
+            }
+
+
+            function deleteTicket(id) {
+                $.post("php/tickets/delete.inc.php", {
+                    deleteTicketSubmit: "action",
+                    id
+                }, function(data) {
+                    if (data !== "Success!") {
+                        showMessage("error", data)
+                    } else {
+                        showMessage("success", "Ticket efface avec succes!")
                     }
                 })
             }
@@ -1016,7 +786,9 @@ if (!isset($_SESSION["user"])) {
 
             })
 
-
+            hideEditForm.addEventListener('click', () => {
+                editForm.classList.add('d-none')
+            })
 
             /***
              * Edit ticket end
@@ -1622,6 +1394,8 @@ if (!isset($_SESSION["user"])) {
                                         <span class="img-gradient-overlay"></span>
                                         <div class="card-body content-overlay pb-0">
                                             <span class="badge bg-info editBtn" data-id="${event.id}"><i class="fs-md fi-edit"></i></span>
+
+                                             <span class="badge bg-danger deleteBtn" data-id="${event.id}"><i class="fs-md fi-x"></i></span>
                                         </div>
 
 
@@ -1673,6 +1447,16 @@ if (!isset($_SESSION["user"])) {
                     editDisplay(id)
                 })
 
+                $(".deleteBtn").click(function(e) {
+                    const id = $(this).data("id")
+
+                    if (confirm("Etes-vous sure?")) {
+                        deleteTicket(id)
+                    }
+                })
+
+
+
             }
 
             function isLoading() {
@@ -1699,7 +1483,7 @@ if (!isset($_SESSION["user"])) {
                                             <div class="d-flex align-items-center justify-content-between pb-1">
                                                 <span class="fs-sm text-light me-3">${ticket.date}</span>
                                                   <span class="badge bg-info editBtn" data-id="${ticket.id}"><i class="fs-md fi-edit"></i></span>
-                                               
+                                                <span class="badge bg-danger deleteBtn" data-id="${event.id}"><i class="fs-md fi-x"></i></span>
                                             </div>
                                             <h3 class="h6 mb-1">
                                                 <a href="#" class="nav-link-light">
@@ -1747,6 +1531,14 @@ if (!isset($_SESSION["user"])) {
                     const id = $(this).data("id")
                     $("#editTicketForm").removeClass("d-none")
                     editDisplay(id)
+                })
+
+                $(".deleteBtn").click(function(e) {
+                    const id = $(this).data("id")
+
+                    if (confirm("Etes-vous sure?")) {
+                        deleteTicket(id)
+                    }
                 })
 
             }
