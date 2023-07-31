@@ -23,6 +23,14 @@ class Users extends Dbh
 
         return $result;
     }
+    protected function getNamePhoto()
+    {
+        $sql = "SELECT  `id`, `full_name`, `photo` FROM `users` WHERE 1";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute() or die(print_r($stmt->errorInfo(), true));
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 
     protected function getUsersById($id)
     {

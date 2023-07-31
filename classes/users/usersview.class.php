@@ -16,7 +16,11 @@ class Usersview extends Users
         $result = $this->getUsersById($id);
         return $result;
     }
-
+    public function takeNamePhoto()
+    {
+        $result = $this->getNamePhoto();
+        return $result;
+    }
     public function takeUsersByEmail($email)
     {
         $result = $this->getUsersByEmail($email);
