@@ -40,4 +40,17 @@ class Userscontrol extends Users
     {
         $this->deleteUser(($id));
     }
+    //
+    // Methods For pwdReset Table
+    //
+
+    public function removepwdReset($email)
+    {
+        $this->deletepwdReset($email);
+    }
+
+    public function createpwdReset($pwdResetEmail, $pwdResetSelector, $pwdResetToken, $pwdResetExpires)
+    {
+        $this->setpwdReset($pwdResetEmail, $pwdResetSelector, $pwdResetToken, $pwdResetExpires);
+    }
 }

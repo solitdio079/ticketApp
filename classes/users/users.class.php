@@ -106,4 +106,32 @@ class Users extends Dbh
         $stmt->execute([$id])
             or die(print_r($stmt->errorInfo(), true));
     }
+    //
+    // Methods For pwdReset Table
+    //
+
+    protected function deletepwdReset($email)
+    {
+        $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?;";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$email]) or die(print_r($stmt->errorInfo(), true));
+    }
+
+    protected function setpwdReset($pwdResetEmail, $pwdResetSelector, $pwdResetToken, $pwdResetExpires)
+    {
+        $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector,pwdResetValidator, pwdResetExpires) VALUES (?,?,?,?);";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$pwdResetEmail, $pwdResetSelector, $pwdResetToken, $pwdResetExpires]) or die(print_r($stmt->errorInfo(), true));
+    }
+
+    protected function getpwdResetSelector($pwdResetSelector, $currentDate)
+    {
+        $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector = ? AND pwdResetExpires >=$currentDate;";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$pwdResetSelector]) or die(print_r($stmt->errorInfo(), true));
+
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
 }

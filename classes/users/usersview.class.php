@@ -26,4 +26,13 @@ class Usersview extends Users
         $result = $this->getUsersByEmail($email);
         return $result;
     }
+    /**
+     * pwdReset Methods
+     */
+
+    public function takepwdResetSelector($pwdResetSelector, $currentDate)
+    {
+        $result = $this->getpwdResetSelector($pwdResetSelector, $currentDate);
+        return $result;
+    }
 }

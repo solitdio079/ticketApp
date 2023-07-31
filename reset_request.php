@@ -1,27 +1,20 @@
-<?php
-session_start();
-if (isset($_SESSION["user"])) {
-    header("Location: admin.php");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Finder | Sign In Page (Dark)</title>
+    <title>TicketApp | Reset Request</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="Finder - Directory &amp; Listings Bootstrap Template">
-    <meta name="keywords" content="bootstrap, business, directory, listings, e-commerce, car dealer, city guide, real estate, job board, user account, multipurpose, ui kit, html5, css3, javascript, gallery, slider, touch">
-    <meta name="author" content="Createx Studio">
+    <meta name="description" content="TicketApp - Application &amp; Pour Acheter tous vos tickets">
+    <meta name="keywords" content="ticket, mali ticket app, ticketApp, ticket app, ecommerce, mali online business, online africa">
+    <meta name="author" content="bySolitdio">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
     <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#766df4">
     <meta name="theme-color" content="#ffffff">
@@ -129,31 +122,21 @@ if (isset($_SESSION["user"])) {
     <main class="page-wrapper">
         <!-- Page content-->
         <div class="container-fluid d-flex h-100 align-items-center justify-content-center py-4 py-sm-5">
-            <div class="card card-light card-body" style="max-width: 940px"><a class="position-absolute top-0 end-0 nav-link-light fs-sm py-1 px-2 mt-3 me-3" href="#" onclick="window.history.go(-1); return false;"><i class="fi-arrow-long-left fs-base me-2"></i>Retour</a>
+            <div class="card card-light card-body" style="max-width: 940px"><a class="position-absolute top-0 end-0 nav-link-light fs-sm py-1 px-2 mt-3 me-3" href="#" onclick="window.history.go(-1); return false;"><i class="fi-arrow-long-left fs-base me-2"></i>Go back</a>
                 <div class="row mx-0 align-items-center">
                     <div class="col-md-6 border-end-md border-light p-2 p-sm-5">
-                        <h2 class="h3 text-light mb-4 mb-sm-5">Salut! <br>Bienvenue.</h2><img class="d-block mx-auto" src="assets/img/signin-modal/signin-dark.svg" width="344" alt="Illustartion">
-                        <div class="text-light mt-4 mt-sm-5"><span class="opacity-60">vous n'avez pas de compte? </span><a class="text-light" href="register.php">Creer un compte</a></div>
+                        <h2 class="h3 text-light mb-4 mb-sm-5">Mot de Passe oublie? <br>Recevez un lien de renouvellement.</h2><img class="d-block mx-auto" src="assets/img/signin-modal/signin-dark.svg" width="344" alt="Illustartion">
+                        <div class="text-light mt-4 mt-sm-5"><span class="opacity-60">vous n'avez pas de compte? </span><a class="text-light" href="signup.php">Creer un compte</a></div>
                     </div>
                     <div class="col-md-6 px-2 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
 
-                        <form class="needs-validation" id="loginForm">
+                        <form class="needs-validation" id="requestForm">
                             <div class="mb-4">
-                                <label class="form-label text-light mb-2" for="signin-email">Email</label>
-                                <input class="form-control form-control-light" type="email" id="signin-email" placeholder="Enter your email" required>
+                                <label class="form-label text-light mb-2" for="request-email">Email</label>
+                                <input class="form-control form-control-light" type="email" id="request-email" placeholder="Enter your email" required>
                             </div>
-                            <div class="mb-4">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <label class="form-label text-light mb-0" for="signin-password">Mot de Passe</label><a class="fs-sm text-light" href="reset_request.php">Mot de Passe oublie?</a>
-                                </div>
-                                <div class="password-toggle">
-                                    <input class="form-control form-control-light" type="password" id="signin-password" placeholder="Entrez votre mot de passe" required>
-                                    <label class="password-toggle-btn" aria-label="Show/hide password">
-                                        <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary btn-lg w-100" id="loginSubmit" type="submit">Connectez-vous</button>
+
+                            <button class="btn btn-primary btn-lg w-100" id="requestSubmit" type="submit">Envoyez</button>
                         </form>
                     </div>
                 </div>
@@ -189,7 +172,6 @@ if (isset($_SESSION["user"])) {
     <script src="assets/vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <!-- Main theme script-->
     <script src="assets/js/theme.min.js"></script>
 
@@ -199,14 +181,18 @@ if (isset($_SESSION["user"])) {
             Messaging functions
             */
 
-            //FeedBack shower
             function showMessage(type, message) {
-                Swal.fire({
-                    icon: type,
-                    title: 'Reponse du server',
-                    text: message,
-                })
+                if (type == "success") {
+                    $("#feedBack-title").html("Message du Serveur");
+                    $("#feedBack-body").html("<div class='d-flex flex-column justify-content-between text-center'> <i style='font-size:4rem;' class='fi-check-circle mb-2 text-success'></i><p>" + message + "</p></div>");
+                } else if (type == "error") {
+                    $("#feedBack-title").html("Message du Serveur");
+                    $("#feedBack-body").html("<div class='d-flex flex-column justify-content-between text-center'> <i  style='font-size:4rem;'  class='fi-alert-circle  mb-2 text-danger'></i><p>" + message + "</p></div>");
+                } else {
+                    $("#feedBack-body").html("<div class='d-flex flex-column justify-content-between text-center'> <i  style='font-size:4rem;'  class='fi-alert-circle mb-2 text-danger'></i><p>Le type de message icorrect!</p></div>");
+                }
 
+                $("#feedBack").modal("toggle");
             }
 
 
@@ -214,24 +200,25 @@ if (isset($_SESSION["user"])) {
              * Form  submit action 
              */
 
-            $("#loginForm").submit(function(e) {
+            $("#requestForm").submit(function(e) {
                 e.preventDefault();
-                $("#loginSubmit").html(`<div class="spinner-border text-dark" role="status">
+                $("#requestSubmit").html(`<div class="spinner-border text-dark" role="status">
                             <span class="visually-hidden">Loading...</span>
                             </div>`);
 
 
-                $.post("php/users/login.inc.php", {
-                    loginSubmit: "action",
-                    email: $("#signin-email").val(),
-                    pwd: $("#signin-password").val()
+                $.post("php/reset_request.inc.php", {
+                    resetRequestSubmit: "action",
+                    email: $("#request-email").val(),
+
                 }, function(data) {
-                    if (data !== "Success!") {
+                    if (data !== "Success") {
                         showMessage("error", data);
-                        $("#loginSubmit").html("Connectez-vous");
+                        $("#requestSubmit").html("Envoyer");
                     } else {
-                        showMessage("success", "Vous etes connectez!");
-                        window.location.href = "admin.php";
+                        showMessage("success", "Verifiez votre email pour le lien!");
+                        $("#requestSubmit").html("Envoyer");
+                        //window.location.href = "login.php";
                     }
                 });
 
