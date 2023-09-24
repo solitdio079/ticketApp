@@ -156,17 +156,20 @@ session_start();
             </div>
             <div class="row px-3">
                 <form class="form-group form-group-light" id="homeSearchForm">
-                    <select class="form-select" id="homeSearchType">
-                        <option>Type de Ticket</option>
+                    <select class="form-select" id="homeSearchType" required>
+                        <option value="none">Type de Ticket</option>
                         <option value="0">Evenement</option>
                         <option value="1">Bus</option>
                     </select>
                     <div class="input-group m-2">
-                        <input  id="homeSearchDate" class="form-control form-control-light date-picker rounded pe-5" type="text" placeholder="Choose date" data-datepicker-options='{"altInput": true, "altFormat": "F j, Y", "dateFormat": "Y-m-d"}'>
+                        <input  id="homeSearchDate" class="form-control form-control-light date-picker rounded pe-5" type="text" placeholder="Choose date" data-datepicker-options='{"altInput": true, "altFormat": "F j, Y", "dateFormat": "Y-m-d"}' required>
                         <i class="fi-calendar position-absolute top-50 end-0 translate-middle-y me-3"></i>
                     </div>
-                    <button type="button" class="btn btn-translucent-primary">Rechercher</button>
+                    <button type="submit" id="homeSearchBtn" class="btn btn-translucent-primary">Rechercher</button>
                 </form>
+            </div>
+            <div class="row px-3" id="ticketsContainer">
+
             </div>
         </div>
     </main>
@@ -186,6 +189,7 @@ session_start();
 
     <!-- Main theme script-->
     <script src="assets/js/theme.min.js"></script>
+    <script type="module" src="js/home.js"></script>
 </body>
 
 </html>
