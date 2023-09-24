@@ -101,6 +101,14 @@ class Tickets extends Dbh
         $results = $stmt->fetchAll();
         return $results;
     }
+    protected function getHomeSearch($type, $date)
+    {
+        $sql = "SELECT * FROM `Tickets` WHERE `type`=? AND `date` = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$type, $date]) or die(print_r($stmt->errorInfo(), true));
+        $results = $stmt->fetchAll();
+        return $results;
+    }
 
     protected function getTicketsByCompany($company)
     {

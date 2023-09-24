@@ -50,7 +50,7 @@
          <div class="collapse navbar-collapse order-lg-2" id="navbarUserNav">
              <ul class="navbar-nav">
                  <li class="nav-item active">
-                     <a href="#" class="nav-link">Accueil</a>
+                     <a href="home.php" class="nav-link">Accueil</a>
                  </li>
                  <li class="nav-item">
                      <a href="#" class="nav-link">Tickets</a>

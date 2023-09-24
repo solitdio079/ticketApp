@@ -27,4 +27,10 @@ class Ticketsview extends Tickets
         $results = $this->getTicketsByType($type);
         return $results;
     }
+
+    public function takeHomeSearch($type, $date)
+    {
+        $results = $this->getHomeSearch($type, $date);
+        return $results;
+    }
 }
