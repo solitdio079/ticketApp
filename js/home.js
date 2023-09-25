@@ -7,6 +7,13 @@ const homeSearchForm = document.getElementById('homeSearchForm')
 const homeSearchType = document.getElementById('homeSearchType')
 const homeSearchDate = document.getElementById('homeSearchDate')
 const ticketsContainer = document.getElementById('ticketsContainer')
+const busSort = document.getElementById('busSort')
+const eventSort = document.getElementById('eventSort')
+//const companySort = document.getElementById('companySort')
+const destinationFilter = document.getElementById("destinationFilter")
+const departureFilter = document.getElementById("departureFilter")
+const placeFilter = document.getElementById("placeFilter")
+const companyFilter = document.getElementById("companyFilter")
 
 // Functions to Handle Events
 async function getHomeSearch(e) {
@@ -26,24 +33,133 @@ async function getHomeSearch(e) {
         .then((data) => {
             //console.log(data);
             if (data.type == "0" && data.tickets.length !== 0) {
+                eventSort.classList.remove("d-none")
+                busSort.classList.add('d-none')
+
+                // filtering functions
+               
+                function filterByPlace(e) {
+                  isLoading(ticketsContainer)
+                  const place = e.target.value.toLowerCase()
+                  const placeFiltered = data.tickets.filter((ticket) => {
+                    return (
+                      JSON.parse(ticket.details)
+                        .Place.toLowerCase()
+                        .includes(place) === true
+                    )
+                  })
+                  showEvents(placeFiltered)
+                }
+                // Event Listeners
+                placeFilter.addEventListener('keypress', filterByPlace)
+                showEvents(data.tickets)
+            } else if (data.type == "1" && data.tickets.length !== 0) {
+              busSort.classList.remove('d-none')
+              eventSort.classList.add('d-none')
+
+              // filtering functions
+
+              function filterByDestination(e) {
+                isLoading(ticketsContainer)
+                  const destination = e.target.value.toLowerCase()
+                  const departure = departureFilter.value
+                const destinationFiltered = data.tickets.filter((ticket) => {
+                  return (
+                    JSON.parse(ticket.details)
+                      .Destination.place.toLowerCase()
+                      .includes(destination) === true &&
+                    JSON.parse(ticket.details)
+                      .Departure.place.toLowerCase()
+                      .includes(departure)
+                  )
+                })
+                showBus(destinationFiltered)
+              }
                 
-                let markup = data.tickets.map(
-                     (event) => {
-                        const details = JSON.parse(event.details)
-                        // Getting one event's company
-                        const company = JSON.parse(event.company)
-                        
-                       
-                       
-                       
-                        // end of getting company
-                        const images = event.img.split(';')
-                        /* const company = JSON.parse(
+              function filterByDeparture(e) {
+                isLoading(ticketsContainer)
+                  const departure = e.target.value.toLowerCase()
+                  const destination = destinationFilter.value
+                const departureFiltered = data.tickets.filter((ticket) => {
+                  return (
+                    JSON.parse(ticket.details)
+                      .Departure.place.toLowerCase()
+                      .includes(departure) === true &&
+                    JSON.parse(ticket.details)
+                      .Destination.place.toLowerCase()
+                      .includes(destination) === true
+                  )
+                })
+                showBus(departureFiltered)
+              }
+
+              //Event Listeners
+              destinationFilter.addEventListener(
+                'keypress',
+                filterByDestination
+              )
+              departureFilter.addEventListener(
+                'keypress',
+                filterByDeparture
+              )
+              showBus(data.tickets)
+            } else {
+                ticketsContainer.innerHTML = `Pas de Ticket!`
+            }
+
+
+        }).catch(error => console.log(error.message))
+
+    }
+    
+   
+}
+
+/****
+ *  Posting Data functions
+ */
+async function postData(url = '', data = {}) {
+   try {
+     const response = await fetch(url, {
+       method: 'POST',
+       body: data,
+     })
+     return response.json() // parses JSON response into native JavaScript objects
+   } catch (error) {
+     console.error(`Fetch error: ${error.message}`)
+   }
+}
+
+async function postData2(url = '', data = {}) {
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: data,
+    })
+    return response.text() // parses JSON response into native JavaScript objects
+  } catch (error) {
+    console.error(`Fetch error: ${error.message}`)
+  }
+}
+
+/****
+ *  Posting Data functions
+ */
+// Utility functions
+
+function showEvents(tickets) {
+     let markup = tickets.map((event) => {
+       const details = JSON.parse(event.details)
+       // Getting one event's company
+       const company = JSON.parse(event.company)
+
+       // end of getting company
+       const images = event.img.split(';')
+       /* const company = JSON.parse(
                            sessionStorage.getItem('userPhotos')
                          ).filter((user) => user.id === event.company)[0]*/
-                        
-                         
-                         return `
+
+       return `
                  <div class="card my-3 bg-size-cover bg-position-center border-0 overflow-hidden" style="background-image: url(${images[0]});">
                                         <span class="img-gradient-overlay"></span>
                                        
@@ -88,23 +204,25 @@ async function getHomeSearch(e) {
                                             </div>
                                         </div>
                                     </div>
-                ` }
-                )
-               
-                const paginate = new Paginate(markup, 2, ticketsContainer)
-            } else if (data.type == "1" && data.tickets.length !== 0) {
-                let markup = data.tickets.map((ticket) => {
-                  const details = JSON.parse(ticket.details)
-                  // Getting one event's company
-                  const company = JSON.parse(ticket.company)
+                `
+     })
+    const paginate = new Paginate(markup, 2, ticketsContainer)
+    
+}
 
-                  // end of getting company
-                  const images = ticket.img.split(';')
-                  /* const company = JSON.parse(
+function showBus(tickets) {
+     let markup = tickets.map((ticket) => {
+       const details = JSON.parse(ticket.details)
+       // Getting one event's company
+       const company = JSON.parse(ticket.company)
+
+       // end of getting company
+       const images = ticket.img.split(';')
+       /* const company = JSON.parse(
                            sessionStorage.getItem('userPhotos')
                          ).filter((user) => user.id === event.company)[0]*/
 
-                    return `
+       return `
                    <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between pb-1">
                                                 <span class="fs-sm text-light me-3">${ticket.date}</span>
@@ -150,43 +268,12 @@ async function getHomeSearch(e) {
                                         </div>
                 
                 `
-                })
-                const paginate = new Paginate(markup, 2, ticketsContainer)
-            } else {
-                ticketsContainer.innerHTML = `Pas de Ticket!`
-            }
-
-
-        }).catch(error => console.log(error.message))
-
-    }
-    
-   
-}
-
-async function postData(url = '', data = {}) {
-   try {
-     const response = await fetch(url, {
-       method: 'POST',
-       body: data,
      })
-     return response.json() // parses JSON response into native JavaScript objects
-   } catch (error) {
-     console.error(`Fetch error: ${error.message}`)
-   }
+     const paginate = new Paginate(markup, 2, ticketsContainer)
+    
 }
 
-async function postData2(url = '', data = {}) {
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      body: data,
-    })
-    return response.text() // parses JSON response into native JavaScript objects
-  } catch (error) {
-    console.error(`Fetch error: ${error.message}`)
-  }
-}
-
-
+// Event Listeners
 homeSearchForm.addEventListener('submit', getHomeSearch)
+
+

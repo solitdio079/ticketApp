@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,71 +131,68 @@ session_start();
         <?php
         require_once "php/header.inc.php";
         ?>
-        <div class="container pb-lg-4 mt-1 mb-sm-2">
-            <div class="row">
-                <!-- Fade transition + Layer animations -->
-                <div class="tns-carousel-wrapper  tns-carousel-light">
-                    <div class="tns-carousel-inner" data-carousel-options='{"mode": "gallery", "nav": false, "loop":true, "speed": 300, "autoplay": true}'>
-                        <div>
-                            <div class="bg-faded-primary text-center py-5 px-3">
-                                <h3 class="from-top">From top to bottom</h3>
-                                <p class="fs-lg mb-4 pb-2 from-bottom delay-1">From bottom to top</p>
-                                <button class="btn btn-primary scale-down delay-2" type="button">Scale down</button>
+       
+
+         <div class="container pb-lg-4 mt-1 mb-sm-2">
+            <div class="row p-3 m-3">
+               <div class="col-12">
+                 <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                        <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                        <a href="#">Ticket Details</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    </ol>
+                 </nav>
+               </div>
+                <div class="col-md-6 col-sm-12">
+                    <!-- Controls on hover + Nav (dost) inside (Defaults) -->
+                    <div class="card text-white bg-dark border-0">
+                    <div class="card-body border-0">
+                            <div class="tns-carousel-wrapper tns-controls-static tns-nav-outside">
+                            <div class="tns-carousel-inner" data-carousel-options='{"loop": false, "gutter": 16}'>
+                                <img src="assets/img/car-finder/blog/01.jpg" alt="Image">
+                                <img src="assets/img/car-finder/blog/02.jpg" alt="Image">
+                                <img src="assets/img/car-finder/blog/03.jpg" alt="Image">
                             </div>
-                        </div>
-                        <div>
-                            <div class="bg-faded-success text-center py-5 px-3">
-                                <h3 class="from-start">From left to right</h3>
-                                <p class="fs-lg mb-4 pb-2 from-end">From right to left</p>
-                                <button class="btn btn-success scale-up delay-2" type="button">Scale up</button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row px-0 m-3">
-                <form class="form-group form-group-light" id="homeSearchForm">
-                    <select class="form-select" id="homeSearchType" required>
-                        <option value="none">Genre de Ticket</option>
-                        <option value="0">Evenement</option>
-                        <option value="1">Bus</option>
-                    </select>
-                    <div class="input-group m-2">
-                        <input  id="homeSearchDate" class="form-control form-control-light date-picker rounded pe-5" type="text" placeholder="Choose date" data-datepicker-options='{"altInput": true, "altFormat": "F j, Y", "dateFormat": "Y-m-d"}' required>
-                        <i class="fi-calendar position-absolute top-50 end-0 translate-middle-y me-3"></i>
-                    </div>
-                    <button type="submit" id="homeSearchBtn" class="btn btn-translucent-primary">Rechercher</button>
-                </form>
-            </div>
-            <div class="row p-3 d-flex d-none m-3" id="busSort">
-                  <div class="col-6">
-                    <input type="text"  class="form-control form-control-light" name="departureFilter" id="departureFilter" placeholder="Depart">
-                </div>
-                <div class="col-6">
-                    <input type="text"  class="form-control form-control-light" name="destinationFilter" id="destinationFilter"  placeholder="Destination">
-
+                         </div>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-dark">Name: </li>
+                                <li class="list-group-item list-group-item-dark">Details: </li>
+                                <li class="list-group-item list-group-item-dark">Company: </li>
+                                <li class="list-group-item list-group-item-dark">Price: </li>
+                                <li class="list-group-item list-group-item-dark">Date: </li>
+                            </ul>
+               
                 </div>
 
-                 
-            </div>
-            <div class="row p-3 d-flex d-none m-3" id="eventSort">
-                <div class="col-6">
-                    <input type="text" class="form-control form-control-light" name="placeFilter" id="placeFilter" placeholder="Lieu">
                 </div>
-            </div>
-             <div class="row p-3 d-flex d-none m-3" id="companySort">
-                <div class="col-12">
-                    <input type="text" class="form-control form-control-light" name="companyFilter" id="companyFilter" placeholder="Lieu">
-                </div>
-            </div>
-            <div class="row p-3 d-flex justify-content-center m-3" id="ticketsContainer">
+                <div class="col-md-6 col-sm-12">
+<div class="card text-white bg-dark border-0">
+  <div class="card-body border-0">
+    <h4 class="card-title text-white">Card title</h4>
+    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush border-0">
+    <li class="list-group-item list-group-item-dark">Cras justo odio</li>
+    <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
+    <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
+  </ul>
+  <div class="card-body border-0">
+    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+  </div>
+</div>
 
+                </div>
             </div>
-        </div>
-    </main>
-    <?php
-    require_once "php/footer.inc.php";
-    ?>
+         </div>
+        <?php
+        require_once "php/footer.inc.php";
+        ?>
     <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
@@ -210,7 +206,7 @@ session_start();
 
     <!-- Main theme script-->
     <script src="assets/js/theme.min.js"></script>
-    <script type="module" src="js/home.js"></script>
+    <script type="module" src="js/details.js"></script>
 </body>
 
 </html>
