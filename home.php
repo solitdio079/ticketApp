@@ -168,7 +168,7 @@ session_start();
                     <button type="submit" id="homeSearchBtn" class="btn btn-translucent-primary">Rechercher</button>
                 </form>
             </div>
-            <div class="row px-3" id="ticketsContainer">
+            <div class="row p-3 d-flex justify-content-center m-3" id="ticketsContainer">
 
             </div>
         </div>

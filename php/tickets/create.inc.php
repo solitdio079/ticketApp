@@ -11,12 +11,14 @@ if (isset($_POST["createSubmit"])) {
                 echo "Erreure: " . $image['error'];
             } elseif ($image['size'] > 5000000) {
                 echo "Image trop lourde!";
+                exit();
             } else {
                 $extensions = ['jpg', 'jpeg', 'png', 'gif', 'JPG', 'PNG', 'webp'];
                 $file_extension = explode('.', $image['name']);
                 $file_extension = end($file_extension);
                 if (!in_array($file_extension, $extensions)) {
                     echo "Erreure: " . $image['tmp_name'] . " est du type non supporte!";
+                    exit();
                 } else {
                     $imageTemp = $image['tmp_name'];
                     $imageNewName = uniqid("", true) . "." . $file_extension;
@@ -27,6 +29,7 @@ if (isset($_POST["createSubmit"])) {
                         $location .= $uploadForDb . $imageNewName . ";";
                     } else {
                         echo "Images n'a pu etre enregistrer dans le dossier! Reesayez!";
+                        exit();
                     }
                 }
             }

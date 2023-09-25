@@ -1135,7 +1135,7 @@ if (!isset($_SESSION["user"])) {
 
 
             function timeRegExCheck(str) {
-                const regEx = /[0-9]+:[0-9]+:[0-9]+/
+                const regEx = /[0-9]+:[0-9]/
                 return regEx.test(str)
             }
 

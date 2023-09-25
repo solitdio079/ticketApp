@@ -1,6 +1,6 @@
 <?php
 
-class Dbh
+class Dbh1
 {
     private $host = "localhost";
     private $dbName = "finder";

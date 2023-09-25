@@ -23,9 +23,9 @@ function showMessage(type, message) {
     })
 
 }
-function isLoading(el) {
+export function isLoading(el) {
   el.innerHTML = `<div class="spinner-border" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                     </div>`
 }
-export {isJson, showMessage, isLoading}
+export {isJson, showMessage}

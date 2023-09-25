@@ -1,5 +1,5 @@
 <?php
-require_once "dbh.class.php";
+include_once "dbh.class.php";
 
 class Users extends Dbh
 {
@@ -31,6 +31,15 @@ class Users extends Dbh
         $result = $stmt->fetchAll();
         return $result;
     }
+    protected function getOneNamePhoto($id)
+    {
+        $sql = "SELECT  `id`, `full_name`, `photo` FROM `users` WHERE `id`=?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$id]) or die(print_r($stmt->errorInfo(), true));
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
 
     protected function getUsersById($id)
     {

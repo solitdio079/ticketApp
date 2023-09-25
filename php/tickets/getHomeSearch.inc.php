@@ -12,6 +12,13 @@ if (isset($_POST["homeSearchSubmit"])) {
             )
         );
     } else {
+        for ($i = 0; $i < count($tickets); $i++) {
+            include_once "../../classes/users/usersview.class.php";
+            $id = $tickets[$i]["company"];
+            $users = new Usersview();
+            $users = $users->takeOneNamePhoto($id);
+            $tickets[$i]["company"] = json_encode($users[0]);
+        }
         echo json_encode(
             array(
                 "tickets" => $tickets,

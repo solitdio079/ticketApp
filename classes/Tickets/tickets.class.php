@@ -2,7 +2,7 @@
 
 include_once "dbh.class.php";
 
-class Tickets extends Dbh
+class Tickets extends Dbh1
 {
     // CREATE METHOD
     protected function setTicket($name, $type, $details, $company, $img, $price, $date, $total)
