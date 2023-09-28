@@ -165,7 +165,7 @@ function showEvents(tickets) {
                                        
                                         <div class="card-footer content-overlay border-0 pt-0 pb-4">
                                             <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
-                                                <a href="#" class="text-decoration-none text-light pe-2">
+                                                <a href="details.php?id=${event.id}" class="text-decoration-none text-light pe-2">
                                                     <div class="fs-sm text-uppercase pt-2 mb-1">
                                                        ${event.date}<br>
 
@@ -182,7 +182,7 @@ function showEvents(tickets) {
                                                 </a>
 
                                                 <div class="btn-group ms-n2 ms-sm-0 mt-3">
-                                                    <a href="#" class="btn btn-primary px-3">$${event.price}</a>
+                                                    <a href="details.php?id=${event.id}" class="btn btn-primary px-3">$${event.price}</a>
 
                                                 </div>
 
@@ -228,7 +228,7 @@ function showBus(tickets) {
                                                 <span class="fs-sm text-light me-3">${ticket.date}</span>
                                             </div>
                                             <h3 class="h6 mb-1">
-                                                <a href="#" class="nav-link-light">
+                                                <a href="details.php?id=${ticket.id}" class="nav-link-light">
                                                     <div class="text-light opacity-70">
                                                         <i class="fi-map-pin me-1"></i>
                                                        ${details.Departure.place}

@@ -28,4 +28,5 @@ export function isLoading(el) {
                                     <span class="visually-hidden">Loading...</span>
                                     </div>`
 }
+
 export {isJson, showMessage}

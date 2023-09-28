@@ -606,6 +606,7 @@ if (!isset($_SESSION["user"])) {
                     if (!isJson(data)) {
                         showMessage("error", data)
                     } else {
+                        if(JSON.parse(data).length > 0){
                         const ticket = JSON.parse(data)[0]
                         const details = JSON.parse(ticket.details)
                         //const editIds = ["editEvent_place", "editEvent_hour", "editDep_place", "editDep_hour", "editDes_place", "editDes_hour"]
@@ -617,7 +618,7 @@ if (!isset($_SESSION["user"])) {
                         editPrice.value = ticket.price
                         editPrevImages.value = ticket.img
                         editId.value = ticket.id
-                        editOrganiser.value = ticket.company
+                        editOrganiser.value = JSON.parse(ticket.company).id
                         //showMessage("success", editId.value)
                         //showMessage("success", editPrevImages.value)
 
@@ -658,6 +659,9 @@ if (!isset($_SESSION["user"])) {
                             default:
                                 break;
                         }
+                    }else{
+                        showMessage("info", "No Tickets")
+                    }
                     }
                 })
             }

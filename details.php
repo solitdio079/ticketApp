@@ -131,7 +131,7 @@ session_start();
         <?php
         require_once "php/header.inc.php";
         ?>
-       
+
 
          <div class="container pb-lg-4 mt-1 mb-sm-2">
             <div class="row p-3 m-3">
@@ -139,12 +139,12 @@ session_start();
                  <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                        <a href="#">Home</a>
+                        <a href="home.php">Home</a>
                         </li>
-                        <li class="breadcrumb-item">
-                        <a href="#">Ticket Details</a>
+                        <li class="breadcrumb-item active" aria-current="page">
+                       Ticket Details
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        
                     </ol>
                  </nav>
                </div>
@@ -152,7 +152,7 @@ session_start();
                     <!-- Controls on hover + Nav (dost) inside (Defaults) -->
                     <div class="card text-white bg-dark border-0">
                     <div class="card-body border-0">
-                            <div class="tns-carousel-wrapper tns-controls-static tns-nav-outside">
+                            <div class="tns-carousel-wrapper tns-controls-static tns-nav-outside"  id="imgContainer">
                             <div class="tns-carousel-inner" data-carousel-options='{"loop": false, "gutter": 16}'>
                                 <img src="assets/img/car-finder/blog/01.jpg" alt="Image">
                                 <img src="assets/img/car-finder/blog/02.jpg" alt="Image">
@@ -161,31 +161,101 @@ session_start();
                             </div>
                          </div>
                             <ul class="list-group">
-                                <li class="list-group-item list-group-item-dark">Name: </li>
-                                <li class="list-group-item list-group-item-dark">Details: </li>
-                                <li class="list-group-item list-group-item-dark">Company: </li>
-                                <li class="list-group-item list-group-item-dark">Price: </li>
-                                <li class="list-group-item list-group-item-dark">Date: </li>
+                                <div class="d-flex flex-wrap  justify-content-between">
+                                    <li class="list-group-item list-group-item-dark" id="nameItem">Name: </li>
+                                    <li class="list-group-item list-group-item-dark" id="priceItem">Price: </li>
+                                    <li class="list-group-item list-group-item-dark" id="dateItem">Date: </li>
+                                </div>
+                                 <li class="list-group-item list-group-item-dark" id="detailsItem">Details: </li>
+                                <li class="list-group-item list-group-item-dark" id="companyItem">Company: </li>
                             </ul>
-               
+
                 </div>
 
                 </div>
                 <div class="col-md-6 col-sm-12">
-<div class="card text-white bg-dark border-0">
-  <div class="card-body border-0">
-    <h4 class="card-title text-white">Card title</h4>
-    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush border-0">
-    <li class="list-group-item list-group-item-dark">Cras justo odio</li>
-    <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
-    <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body border-0">
-    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-  </div>
-</div>
+                <div class="card text-white bg-dark border-0">
+                <div class="card-body border-0">
+                    <h4 class="card-title text-white">Infos de l'utilisateur</h4>
+                    <p class="card-text fs-sm text-muted">Ci-dessous se trouve les informations que l'acheteur doit remplir</p>
+                </div>
+                  <ul class="list-group list-group-flush border-0">
+                    <li class="list-group-item list-group-item-dark">
+                        <select class="form-select form-select-light" id="passSelect">
+                            <option value="0">Nombre de Tickets</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                     </li>
+                     
+                    <div class="d-none" id="pass1Infos">
+                         <li class="list-group-item list-group-item-dark">Beneficiaire No1</li>
+                        <li class="list-group-item list-group-item-dark">
+                            <input class="form-control form-control-light" type="text" name="pass1FullName" id="pass1FullName" placeholder="Nom Complet du Beneficiaire">
+                        </li>
+                        <li class="list-group-item list-group-item-dark">
+                            <input class="form-control form-control-light" type="text" name="pass1ID" id="pass1ID" placeholder="Numero d'Identite du Beneficiaire">
+                        </li>
+                    </div>
+                   
+                    <div class="d-none" id="pass2Infos">
+                          <li class="list-group-item list-group-item-dark">Beneficiaire No2</li>
+                        <li class="list-group-item list-group-item-dark">
+                            <input class="form-control form-control-light" type="text" name="pass2FullName" id="pass2FullName" placeholder="Nom Complet du Beneficiaire">
+                        </li>
+                        <li class="list-group-item list-group-item-dark">
+                            <input class="form-control form-control-light" type="text" name="pass2ID" id="pass2ID" placeholder="Numero d'Identite du Beneficiaire">
+                        </li>
+                    </div>
+                     
+
+                 </ul>
+                <hr class="m-3">
+                <?php
+                if (isset($_SESSION["user"])) {
+
+
+                    ?>
+                                                                                                                                                         <ul class="list-group list-group-flush border-0">
+                                                                                                                                                        <li class="list-group-item list-group-item-dark">
+                                                                                                                                                            <input class="form-control form-control-light" type="email" name="buyerEmail" id="buyerEmail" value="<?php echo $_SESSION["user"]["email"]; ?>" disabled>
+                                                                                                                                                        </li>
+                                                                                                                                                        <li class="list-group-item list-group-item-dark">
+                                                                                                                                                            <input class="form-control form-control-light" type="text" name="buyerFullName" id="buyerFullName" value="<?php echo $_SESSION["user"]["full_name"]; ?>" disabled>
+                                                                                                                                                        </li>
+                   
+                                                                                                                                                    </ul>
+
+                                                                                                                                            <?php
+                } else {
+                    ?>
+
+                
+                
+                
+                                                                                                                                            <ul class="list-group list-group-flush border-0">
+                                                                                                                                                <li class="list-group-item list-group-item-dark">
+                                                                                                                                                    <input class="form-control form-control-light" type="email" name="buyerEmail" id="buyerEmail" placeholder="Email de l'acheteur">
+                                                                                                                                                </li>
+                                                                                                                                                <li class="list-group-item list-group-item-dark">
+                                                                                                                                                    <input class="form-control form-control-light" type="text" name="buyerFullName" id="buyerFullName" placeholder="Nom Complet de l'acheteur">
+                                                                                                                                                </li>
+                   
+                                                                                                                                            </ul>
+                <?php
+                }
+                ?>
+                <div class="card-body border-0">
+                    <h5 class="text-light">Options de payment:</h5><br>
+                    <button class="btn btn-sm btn-info m-2" id="orangeMoneyBtn">
+                       <img src="assets/img/orange/orange_money.png" width="80">
+                    </button>
+                   ou 
+                     <button class="btn btn-accent bg-gradient  m-2" id="stripeBtn">
+                       <img src="assets/img/orange/stripe_white.png" width="80">
+                    </button>
+                </div>
+                </div>
 
                 </div>
             </div>
