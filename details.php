@@ -233,12 +233,12 @@ session_start();
                 
                 
                 
-                                                                                                                                            <ul class="list-group list-group-flush border-0">
+                                                                                                                                         <ul class="list-group list-group-flush border-0">
                                                                                                                                                 <li class="list-group-item list-group-item-dark">
-                                                                                                                                                    <input class="form-control form-control-light" type="email" name="buyerEmail" id="buyerEmail" placeholder="Email de l'acheteur">
+                                                                                                                                                    <input class="form-control form-control-light" type="email" name="buyerEmail" id="buyerEmail" placeholder="Email de l'acheteur" required>
                                                                                                                                                 </li>
                                                                                                                                                 <li class="list-group-item list-group-item-dark">
-                                                                                                                                                    <input class="form-control form-control-light" type="text" name="buyerFullName" id="buyerFullName" placeholder="Nom Complet de l'acheteur">
+                                                                                                                                                    <input class="form-control form-control-light" type="text" name="buyerFullName" id="buyerFullName" placeholder="Nom Complet de l'acheteur" required>
                                                                                                                                                 </li>
                    
                                                                                                                                             </ul>
@@ -276,7 +276,7 @@ session_start();
 
     <!-- Main theme script-->
     <script src="assets/js/theme.min.js"></script>
-    <script type="module" src="js/details.js"></script>
+    <script type="module" src="js/details.js?v='<?php echo time(); ?>'"></script>
 </body>
 
 </html>
